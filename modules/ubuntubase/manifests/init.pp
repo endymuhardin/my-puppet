@@ -48,14 +48,15 @@ class ubuntubase::update {
 class ubuntubase::upgrade {
   exec { "Upgrade Existing Apps":
     require => Class["ubuntubase::update"],
-    command => "/usr/bin/apt-get upgrade -y"
+    command => "/usr/bin/apt-get upgrade -y", 
+    require => Class["ubuntubase::update"]
   }
 }
 
 class ubuntubase::install {
   package { ["mc","openssh-server","ntp"]: 
     ensure => present, 
-    require => Class["ubuntubase::update"]
+    require => Class["ubuntubase::upgrade"]
   }
 }
 
@@ -70,5 +71,5 @@ class ubuntubase::service {
 }
 
 class ubuntubase {
-    include ubuntubase::sources,ubuntubase::update,ubuntubase::install,ubuntubase::service
+    include ubuntubase::sources,ubuntubase::update,ubuntubase::upgrade,ubuntubase::install,ubuntubase::service
 }
