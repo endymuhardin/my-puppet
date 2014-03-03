@@ -20,13 +20,13 @@ class ubuntubase::sources {
   apt::source{ 'canonical-partner' :
     location    => 'http://archive.canonical.com/ubuntu',
     repos       => 'partner',
-    include_src => 'false'
+    include_src => false
   }
   
   apt::source{ 'ubuntu-extras' :
     location    => 'http://extras.ubuntu.com/ubuntu',
     repos       => 'main',
-    include_src => 'false'
+    include_src => false
   }
     
   apt::source { 'puppetlabs':
@@ -34,7 +34,7 @@ class ubuntubase::sources {
     repos       => 'main',
     key         => '4BD6EC30',
     key_server  => 'pgp.mit.edu',
-    include_src => 'false'
+    include_src => false
   }
 }
 
@@ -55,7 +55,7 @@ class ubuntubase::upgrade {
 class ubuntubase::install {
   package { ["mc","openssh-server","ntp"]: 
     ensure => present, 
-    require => Class["ubuntubase::update"]
+    require => Class["ubuntubase::upgrade"]
   }
 }
 
