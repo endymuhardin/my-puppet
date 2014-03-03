@@ -1,2 +1,7 @@
 # Konfigurasi Laptop Endy #
-include ubuntubase,ubuntudesktop
+include ubuntubase,ubuntudesktop,mysql
+
+mysqldb { "belajar":
+    user => "belajar",
+    password => "java",
+}
