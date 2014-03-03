@@ -1,20 +1,33 @@
 include apt
 
-class { 'apt':
-  always_apt_update    => false,
-  purge_sources_list   => true,
-  purge_sources_list_d => true,
-  purge_preferences_d  => true,
-  update_timeout       => 600
-}
-
 class ubuntubase::sources {
-  file { "/etc/apt/sources.list":
-    ensure => present,
-    owner => "root",
-    group => "root",
-    mode => "0644",
-    content => template("ubuntubase/sources.list.erb")
+  class { 'apt':
+    always_apt_update    => false,
+    purge_sources_list   => true,
+    purge_sources_list_d => true,
+    purge_preferences_d  => true,
+    update_timeout       => 600
+  }
+
+  apt::source{ 'ubuntu-kambing' :
+    location    => 'http://kambing.ui.ac.id/ubuntu',
+    release     => "${::lsbdistcodename}",
+    repos       => 'main restricted universe multiverse',
+    include_src => false
+  }
+  
+  apt::source{ 'ubuntu-kambing-updates' :
+    location    => 'http://kambing.ui.ac.id/ubuntu',
+    release     => "${::lsbdistcodename}-updates",
+    repos       => 'main restricted universe multiverse',
+    include_src => false
+  }
+  
+  apt::source{ 'ubuntu-kambing-security' :
+    location    => 'http://kambing.ui.ac.id/ubuntu',
+    release     => "${::lsbdistcodename}-security",
+    repos       => 'main restricted universe multiverse',
+    include_src => false
   }
   
   apt::source{ 'canonical-partner' :
@@ -55,7 +68,7 @@ class ubuntubase::upgrade {
 class ubuntubase::install {
   package { ["mc","openssh-server","ntp"]: 
     ensure => present, 
-    require => Class["ubuntubase::upgrade"]
+    require => Class["ubuntubase::update"]
   }
 }
 
