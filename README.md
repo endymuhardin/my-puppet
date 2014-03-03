@@ -1,4 +1,4 @@
-# Puppet Script untuk Laptop Endy #
+# Puppet Script untuk Laptop #
 
 Otomasi instalasi laptop menggunakan [Puppet](http://puppetlabs.com/)
 
@@ -17,3 +17,12 @@ Otomasi instalasi laptop menggunakan [Puppet](http://puppetlabs.com/)
 ## Node ##
 
 * My Laptop
+
+## Cara Pemakaian ##
+
+1. Install Repository Puppet [dari sini](https://apt.puppetlabs.com/), pilih sesuai rilis Ubuntu
+2. Install Puppet: `apt-get update && apt-get install puppet -y`
+3. Install modul apt : `puppet module install puppetlabs/apt`
+3. Copy isi folder `my-puppet` ke dalam `/etc/puppet`
+4. Apply config yang diinginkan: `puppet apply --debug /etc/puppet/nodes/breadwinner.pp`
+

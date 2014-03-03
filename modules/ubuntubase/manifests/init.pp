@@ -8,11 +8,13 @@ class { 'apt':
   update_timeout       => 600
 }
 
-class baseubuntu::sources {
-  apt::source{ 'kambing-repo' :
-    location    => 'http://kambing.ui.ac.id/ubuntu/',
-    repos       => 'main restricted universe multiverse',
-    include_src => 'false'
+class ubuntubase::sources {
+  file { "/etc/apt/sources.list":
+    ensure => present,
+    owner => "root",
+    group => "root",
+    mode => "0644",
+    content => template("ubuntubase/sources.list.erb")
   }
   
   apt::source{ 'canonical-partner' :
@@ -36,30 +38,37 @@ class baseubuntu::sources {
   }
 }
 
-class baseubuntu::update {
+class ubuntubase::update {
   exec { "Update Repository Ubuntu":
     command => "/usr/bin/apt-get update",
-    require => Class["baseubuntu::sources"]
+    require => Class["ubuntubase::sources"]
   }
 }
 
-class baseubuntu::install {
+class ubuntubase::upgrade {
+  exec { "Upgrade Existing Apps":
+    require => Class["ubuntubase::update"],
+    command => "/usr/bin/apt-get upgrade -y"
+  }
+}
+
+class ubuntubase::install {
   package { ["mc","openssh-server","ntp"]: 
     ensure => present, 
-    require => Class["baseubuntu::update"]
+    require => Class["ubuntubase::update"]
   }
 }
 
-class baseubuntu::service {
+class ubuntubase::service {
   service { "ntp":
     ensure => running,
     enable => true, 
     hasstatus => true,
     hasrestart => true,
-    require => Class["baseubuntu::install"]
+    require => Class["ubuntubase::install"]
   }
 }
 
-class baseubuntu {
-    include baseubuntu::sources,baseubuntu::update,baseubuntu::install,baseubuntu::service
+class ubuntubase {
+    include ubuntubase::sources,ubuntubase::update,ubuntubase::install,ubuntubase::service
 }
