@@ -1,2 +1,2 @@
 # Konfigurasi Laptop Endy #
-include ubuntubase
+include ubuntubase,ubuntudesktop
