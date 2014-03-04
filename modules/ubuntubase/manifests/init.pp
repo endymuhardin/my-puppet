@@ -61,7 +61,8 @@ class ubuntubase::update {
 class ubuntubase::upgrade {
   exec { "Upgrade Existing Apps":
     command => "/usr/bin/apt-get upgrade -y", 
-    require => Class["ubuntubase::update"]
+    require => Class["ubuntubase::update"],
+    timeout => 0
   }
 }
 

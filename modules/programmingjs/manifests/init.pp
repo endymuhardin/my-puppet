@@ -14,7 +14,8 @@ class programmingjs::installnode {
 class programmingjs::installyeoman {
   exec { "Install Yeoman" :
     command => "/usr/bin/npm install -g generator-angular",
-    require => Class["programmingjs::installnode"]
+    require => Class["programmingjs::installnode"],
+    timeout => 0
   }  
 }
 

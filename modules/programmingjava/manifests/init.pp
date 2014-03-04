@@ -27,7 +27,8 @@ class programmingjava::installmaven {
       command   => "/usr/bin/wget  -O ${programmingjava::param::installer} ${programmingjava::param::maven_download}",
       logoutput => on_failure,
       creates   => "${programmingjava::param::installer}",
-      require   => [ Class["programmingjava::installjdk"] ];
+      require   => [ Class["programmingjava::installjdk"] ],
+      timeout => 0;
 
     "Unzip Maven":
       cwd     => "/opt",
