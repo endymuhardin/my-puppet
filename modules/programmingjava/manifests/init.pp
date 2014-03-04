@@ -2,7 +2,7 @@ class programmingjava::param {
     $maven = "apache-maven-3.2.1"
     $installroot = "/opt"
     $maven_download = "http://apache.mirrors.hoobly.com/maven/maven-3/3.2.1/binaries/apache-maven-3.2.1-bin.zip"
-    $installer = "/tmp/maven/$maven-bin.zip"
+    $installer = "/opt/downloads/$maven-bin.zip"
 }
 
 class programmingjava::installjdk {
@@ -15,7 +15,7 @@ class programmingjava::installjdk {
 }
 
 class programmingjava::installmaven {
-  file { "/tmp/maven":
+  file { "/opt/downloads":
     ensure => "directory",
     owner  => "root",
     group  => "root",
