@@ -1,7 +1,8 @@
 # Konfigurasi Laptop Endy #
-include ubuntubase,ubuntudesktop,mysql,virtualbox
+include ubuntubase,ubuntudesktop,pandoc,mysql,programmingjs,programmingjava,virtualbox
 
-mysqldb { "belajar":
+mysqldb { "belajar_development":
     user => "belajar",
-    password => "java",
+    password => "java"
 }
+
