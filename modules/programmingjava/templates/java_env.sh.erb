@@ -1,0 +1,4 @@
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-<%= @architecture  %>
+export M2_HOME=/opt/<%= scope.lookupvar('programmingjava::param::maven') %>
+export PATH=$PATH:$M2_HOME/bin
+
