@@ -25,4 +25,4 @@ Otomasi instalasi laptop menggunakan [Puppet](http://puppetlabs.com/)
 3. Install modul apt : `puppet module install puppetlabs/apt`
 3. Copy isi folder `my-puppet` ke dalam `/etc/puppet`
 4. Apply config yang diinginkan: `puppet apply --debug /etc/puppet/nodes/breadwinner.pp`
-
+5. Bisa juga apply module satu persatu : `puppet apply --debug -e "include ubuntubase,ubuntudesktop"`
