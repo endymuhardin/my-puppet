@@ -2,10 +2,9 @@ class ubuntudesktop {
     package { [
       "keepassx"
       ,"gedit-plugins"
-      ,"ttf-inconsolata"
+      ,"fonts-inconsolata"
       ,"fonts-droid"
       ,"nautilus-open-terminal"
-      ,"chmsee"
       ,"unrar"
       ,"gimp"
       ,"gimp-plugin-registry"
