@@ -67,7 +67,7 @@ class ubuntubase::upgrade {
 }
 
 class ubuntubase::install {
-  package { ["mc","openssh-server","ntp"]: 
+  package { ["mc","openssh-server","ntp","curl"]: 
     ensure => present, 
     require => Class["ubuntubase::upgrade"]
   }
