@@ -8,7 +8,6 @@ class pandoc {
       ,"texlive-math-extra"
       ,"latex-beamer"
     ]:
-    ensure => present,
-    require => Class["ubuntubase"]
+    ensure => present
   }
 }

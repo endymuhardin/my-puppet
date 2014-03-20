@@ -23,7 +23,6 @@ class ubuntudesktop {
       ,"shutter"
       ,"skype"
     ]:
-    ensure => present,
-    require => Class["ubuntubase"]
+    ensure => present
   }
 }

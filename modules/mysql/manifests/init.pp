@@ -4,8 +4,7 @@ class mysql::params {
 
 class mysql::install {
     package { [ "mysql-server"]: 
-        ensure => present,
-        require => Class["ubuntubase"]
+        ensure => present
     }
 }
 

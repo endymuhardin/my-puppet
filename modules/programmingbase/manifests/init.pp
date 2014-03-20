@@ -6,8 +6,7 @@ class programmingbase {
   package { [
       "gitg"
     ]:
-    ensure => present,
-    require => Class["ubuntubase"]
+    ensure => present
   }
   
   file { "/opt/downloads":
