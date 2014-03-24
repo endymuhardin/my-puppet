@@ -4,7 +4,7 @@ class programmingbase {
   $sublime = "sublime_text_3"
 
   package { [
-      "gitg"
+      "git-svn"
     ]:
     ensure => present
   }
