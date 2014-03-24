@@ -22,6 +22,6 @@ Otomasi instalasi laptop menggunakan [Puppet](http://puppetlabs.com/)
 
 1. Install Repository Puppet [dari sini](https://apt.puppetlabs.com/), pilih sesuai rilis Ubuntu
 2. Install Puppet: `apt-get update && apt-get install puppet -y`
-3. Install modul apt : `puppet module install puppetlabs/apt`
+3. Install modul apt : `puppet module install --modulepath=/path/ke/folder/module puppetlabs/apt`
 4. Apply config yang diinginkan: `puppet apply --verbose --modulepath=/path/ke/folder/module nodes/breadwinner.pp`
 5. Bisa juga apply module satu persatu : `puppet apply --verbose --modulepath=/path/ke/folder/module -e "include ubuntubase,ubuntudesktop"`
