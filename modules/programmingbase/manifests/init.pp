@@ -1,4 +1,8 @@
-class programmingbase {
+class programmingbase::sources {
+    apt::ppa{ 'ppa:git-core/ppa': }
+}
+
+class programmingbase::install {
   $sublime_download_link = "http://c758482.r82.cf2.rackcdn.com/sublime_text_3_build_3059_x64.tar.bz2"
   $sublime_download = "/opt/downloads/sublime_text_3.tar.bz2"
   $sublime = "sublime_text_3"
@@ -6,7 +10,8 @@ class programmingbase {
   package { [
       "git-svn"
     ]:
-    ensure => present
+    ensure => present,
+    require => Class["programmingbase::sources"]
   }
   
   file { "/opt/downloads":
@@ -34,4 +39,8 @@ class programmingbase {
     ensure => present,
     content => template("programmingbase/sublime.sh.erb")
   }
+}
+
+class programmingbase {
+    include programmingbase::sources,programmingbase::install
 }
