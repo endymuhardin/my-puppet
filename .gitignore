@@ -1,2 +1,6 @@
 # Ignore Gedit Backup Files
 *~
+
+# Ignore apt module
+modules/apt
+modules/stdlib
