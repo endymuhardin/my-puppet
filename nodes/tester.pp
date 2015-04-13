@@ -1,1 +1,1 @@
-include programmingjava
+include apt,programmingjs
