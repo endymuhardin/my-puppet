@@ -1,0 +1,1 @@
+include ubuntubase,ubuntudesktop,chrome
