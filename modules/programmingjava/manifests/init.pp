@@ -1,13 +1,20 @@
 class programmingjava::param {
-    $maven = "apache-maven-3.2.1"
+    $maven = "apache-maven-3.3.3"
     $installroot = "/opt"
-    $maven_download = "http://apache.mirrors.hoobly.com/maven/maven-3/3.2.1/binaries/apache-maven-3.2.1-bin.zip"
+    $maven_download = "http://mirror.cogentco.com/pub/apache/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.zip"
     $installer = "/opt/downloads/$maven-bin.zip"
+    
+    apt::ppa{ 'ppa:webupd8team/java': }
+  
+    exec { 'apt-get-update':  
+        command     => '/usr/bin/apt-get update',
+        refreshonly => true,
+    }
 }
 
 class programmingjava::installjdk {
   package { [
-      "openjdk-7-jdk", "wget", "unzip"
+      "oracle-java8-installer", "wget", "unzip"  
     ]: 
     ensure => present, 
     require => Class["programmingjava::param"]
