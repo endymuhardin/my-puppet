@@ -4,7 +4,6 @@ class ubuntubase::sources {
   class { 'apt':
     purge => {
       'sources.list' => true,
-      'sources.list.d' => true,
       'preferences.d' => true
     },
     update => {
